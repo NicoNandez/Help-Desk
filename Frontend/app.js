@@ -1,4 +1,4 @@
-const API_URL = "https://help-desk-frontend-ipfk.onrender.com";
+const API_URL = "https://help-desk-backend-uf12.onrender.com";
 
 const form = document.getElementById("ticketForm");
 const lista = document.getElementById("listaTickets");
