@@ -32,6 +32,7 @@ async function cargarTickets() {
     const tickets = await res.json();
 
     lista.innerHTML = "";
+
     tickets.forEach(t => {
       const li = document.createElement("li");
       li.innerHTML = `
@@ -44,12 +45,12 @@ async function cargarTickets() {
           <option value="resuelto" ${t.estado === "resuelto" ? "selected" : ""}>Resuelto</option>
           <option value="cerrado" ${t.estado === "cerrado" ? "selected" : ""}>Cerrado</option>
         </select>
-         <button class="btn-eliminar" data-id="${t.id}">Eliminar</button>
+        <button class="btn-eliminar" data-id="${t.id}">Eliminar</button>
       `;
       lista.appendChild(li);
     });
 
-    // Agregar listener a los selects **después** de generar los tickets
+    // Listeners para cambiar estado
     lista.querySelectorAll("select").forEach(select => {
       select.addEventListener("change", async (e) => {
         const id = e.target.dataset.id;
@@ -68,6 +69,25 @@ async function cargarTickets() {
       });
     });
 
+    // Listeners para eliminar ticket
+    lista.querySelectorAll(".btn-eliminar").forEach(btn => {
+      btn.addEventListener("click", async (e) => {
+        const id = e.target.dataset.id;
+
+        // Confirmación antes de eliminar
+        if (!confirm("¿Estás seguro que quieres eliminar este ticket?")) return;
+
+        try {
+          await fetch(`${API_URL}/tickets/${id}`, {
+            method: "DELETE"
+          });
+          cargarTickets(); // refresca la lista
+        } catch (error) {
+          console.error("Error eliminando ticket:", error);
+        }
+      });
+    });
+
   } catch (error) {
     console.error("Error cargando tickets:", error);
     lista.innerHTML = "<li>No se pudieron cargar los tickets</li>";
@@ -76,3 +96,4 @@ async function cargarTickets() {
 
 // Inicializa
 cargarTickets();
+
