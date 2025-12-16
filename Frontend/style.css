@@ -70,6 +70,28 @@ li {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  transition: transform 0.2s;
+}
+
+li:hover {
+  transform: translateY(-2px);
+}
+
+/* Colores por estado */
+li[data-estado="abierto"] {
+  border-left: 5px solid #28a745; /* verde */
+}
+
+li[data-estado="en_proceso"] {
+  border-left: 5px solid #ffc107; /* amarillo */
+}
+
+li[data-estado="resuelto"] {
+  border-left: 5px solid #17a2b8; /* azul */
+}
+
+li[data-estado="cerrado"] {
+  border-left: 5px solid #6c757d; /* gris */
 }
 
 /* Estado y eliminar */
@@ -105,4 +127,3 @@ h1, h2 {
   border-radius: 6px;
   margin-bottom: 5px;
 }
-
