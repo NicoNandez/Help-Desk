@@ -35,6 +35,7 @@ async function cargarTickets() {
 
     tickets.forEach(t => {
       const li = document.createElement("li");
+      li.dataset.estado = t.estado; // <-- importante para aplicar colores CSS
       li.innerHTML = `
         <strong>${t.titulo}</strong><br>
         ${t.descripcion}<br>
@@ -96,4 +97,3 @@ async function cargarTickets() {
 
 // Inicializa
 cargarTickets();
-
