@@ -44,6 +44,7 @@ async function cargarTickets() {
           <option value="resuelto" ${t.estado === "resuelto" ? "selected" : ""}>Resuelto</option>
           <option value="cerrado" ${t.estado === "cerrado" ? "selected" : ""}>Cerrado</option>
         </select>
+         <button class="btn-eliminar" data-id="${t.id}">Eliminar</button>
       `;
       lista.appendChild(li);
     });
