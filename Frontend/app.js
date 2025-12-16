@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:3000";
+const API_URL = "https://help-desk-frontend-ipfk.onrender.com";
 
 const form = document.getElementById("ticketForm");
 const lista = document.getElementById("listaTickets");
