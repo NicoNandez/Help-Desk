@@ -1,32 +1,108 @@
+/* Reset básico y fuente */
 body {
-  font-family: Arial, sans-serif;
-  background: #f4f4f4;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f0f2f5;
   padding: 20px;
+  margin: 0;
+  color: #333;
 }
 
+/* Formulario */
 form {
-  background: white;
-  padding: 15px;
-  margin-bottom: 20px;
-  border-radius: 5px;
+  background: #fff;
+  padding: 20px;
+  margin-bottom: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-input, textarea, button {
+input, textarea, select {
   width: 100%;
-  margin-bottom: 10px;
-  padding: 8px;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  box-sizing: border-box;
+  transition: border 0.3s;
 }
 
+input:focus, textarea:focus, select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Botón */
 button {
+  width: auto;
+  padding: 10px 20px;
   background: #007bff;
-  color: white;
+  color: #fff;
+  font-weight: bold;
   border: none;
+  border-radius: 6px;
   cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background: #0056b3;
+  transform: translateY(-2px);
+}
+
+/* Lista de tickets */
+ul {
+  list-style: none;
+  padding: 0;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 li {
-  background: white;
-  margin-bottom: 10px;
-  padding: 10px;
-  border-radius: 5px;
+  background: #fff;
+  margin-bottom: 15px;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
+
+/* Estado y eliminar */
+li select {
+  width: 150px;
+}
+
+li .btn-eliminar {
+  width: 100px;
+  background: #dc3545;
+  margin-top: 5px;
+}
+
+li .btn-eliminar:hover {
+  background: #a71d2a;
+}
+
+/* Encabezados y reportes */
+h1, h2 {
+  text-align: center;
+  color: #007bff;
+}
+
+#reporteEstados {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+#reporteEstados li {
+  background: #e9ecef;
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-bottom: 5px;
+}
+
