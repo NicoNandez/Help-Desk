@@ -63,3 +63,24 @@ app.get("/tickets", async (req, res) => {
     res.status(500).json({ error: "Error obteniendo tickets" });
   }
 });
+
+app.put("/tickets/:id/estado", async (req, res) => {
+  const { id } = req.params;
+  const { estado } = req.body;
+
+  const estadosValidos = ["abierto", "en_proceso", "resuelto", "cerrado"];
+  if (!estadosValidos.includes(estado)) {
+    return res.status(400).json({ error: "Estado inválido" });
+  }
+
+  try {
+    const result = await pool.query(
+      "UPDATE tickets SET estado = $1 WHERE id = $2 RETURNING *",
+      [estado, id]
+    );
+    res.json(result.rows[0]);
+  } catch (error) {
+    res.status(500).json({ error: "Error actualizando estado" });
+  }
+});
+
